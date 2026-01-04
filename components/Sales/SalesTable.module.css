@@ -23,7 +23,6 @@
   border-top: 1px solid #eee;
 }
 
-/* Mobile tweaks */
 @media (max-width: 768px) {
   .wrapper {
     border-radius: 8px;

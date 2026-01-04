@@ -1,0 +1,15 @@
+.layoutBody {
+  background: #f5f6fa;
+  display: flex;
+}
+
+.content {
+  margin-left: 68px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+}

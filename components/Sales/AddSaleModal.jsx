@@ -47,8 +47,8 @@ export default function AddSaleModal({ onClose, onSuccess }) {
       return;
     }
 
-    onSuccess(); // refresh table
-    onClose(); // close modal
+    onSuccess(); 
+    onClose(); 
   }
 
   return (

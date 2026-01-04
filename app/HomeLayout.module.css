@@ -1,0 +1,30 @@
+.layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.left {
+  flex: 1;
+}
+.right {
+  width: 340px;
+  flex-shrink: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 992px) {
+  .right {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .right {
+    width: 100%;
+  }
+}

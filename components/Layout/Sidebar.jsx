@@ -14,7 +14,11 @@ import {
   FiSettings
 } from "react-icons/fi";
 
+import styles from "./Sidebar.module.css";
+
 export default function Sidebar() {
+  const [open, setOpen] = useState(false);
+
   const icons = [
     FiHome,
     FiBarChart2,
@@ -28,76 +32,29 @@ export default function Sidebar() {
     FiSettings
   ];
 
-  const [active, setActive] = useState(1);
-  const [hover, setHover] = useState(null);
-
   return (
-    <div
-      style={{
-        width: "68px",
-        background: "#0d6b63",
-        height: "100vh",
-        borderBottomRightRadius: "14px",
-        paddingTop: "16px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "18px",
-        position: "fixed",
-        left: 0,
-        top: 0
-      }}
-    >
-      {/* Avatar */}
-      <div
-        style={{
-          width: 42,
-          height: 42,
-          borderRadius: "50%",
-          background: "#0b5d56",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 600,
-          fontSize: 18,
-          marginBottom: 6
-        }}
+    <>
+      <button
+        onClick={() => setOpen(o => !o)}
+        className={styles.toggleBtn}
       >
-        L
-      </div>
+        ☰
+      </button>
 
-      {/* Icons */}
-      {icons.map((Icon, idx) => {
-        const isActive = active === idx;
-        const isHover = hover === idx;
+      <div
+        className={`${styles.sidebar} ${open ? styles.sidebarOpen : ""}`}
+      >
+        <div className={styles.avatar}>L</div>
 
-        return (
+        {icons.map((Icon, idx) => (
           <div
             key={idx}
-            onClick={() => setActive(idx)}
-            onMouseEnter={() => setHover(idx)}
-            onMouseLeave={() => setHover(null)}
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: "10px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              color: "#fff",
-              background: isActive
-                ? "#1ea896"
-                : isHover
-                ? "#0b5d56"
-                : "transparent"
-            }}
+            className={`${styles.icon} ${idx === 1 ? styles.iconActive : ""}`}
           >
             <Icon size={18} />
           </div>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
