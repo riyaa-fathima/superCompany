@@ -15,7 +15,6 @@ export default function CompanyHeader() {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* LEFT — Avatar + Name + Subtext */}
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <div
             style={{
@@ -38,8 +37,7 @@ export default function CompanyHeader() {
             <p style={{ color: "#777", marginTop: 2 }}>Department Stockholm</p>
           </div>
         </div>
-
-        {/* RIGHT — Action Buttons */}
+        
         <div style={{ display: "flex", gap: 10 }}>
           <button style={iconBtn}>
             <FiStar />

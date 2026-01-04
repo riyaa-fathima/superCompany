@@ -11,22 +11,14 @@ import {
   FiLogOut
 } from "react-icons/fi";
 
+import styles from "./Navbar.module.css";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "10px 18px",
-        background: "#f6f8f7",
-        borderBottom: "1px solid #e5e7eb"
-      }}
-    >
-      {/* LEFT — New + Filter */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+    <div className={styles.navbar}>
+      <div className={styles.left}>
         <button
           style={{
             display: "inline-flex",
@@ -61,36 +53,17 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* CENTER — Search */}
-      <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-        <div
-          style={{
-            width: "55%",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            background: "#ffffff",
-            borderRadius: "20px",
-            border: "1px solid #e2e6e5",
-            padding: "6px 12px"
-          }}
-        >
+      <div className={styles.searchWrap}>
+        <div className={styles.searchBox}>
           <FiSearch size={14} color="#888" />
           <input
             placeholder="Search for anything"
-            style={{
-              border: "none",
-              outline: "none",
-              flex: 1,
-              background: "transparent"
-            }}
+            className={styles.searchInput}
           />
         </div>
       </div>
 
-      {/* RIGHT — Icons */}
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        {/* Bell */}
+      <div className={styles.right}>
         <div style={{ position: "relative", cursor: "pointer" }}>
           <FiBell size={18} />
           <span
@@ -109,7 +82,7 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* PROFILE SECTION */}
+        {/* PROFILE */}
         <div style={{ position: "relative" }}>
           <div
             onClick={() => setOpen(o => !o)}

@@ -1,0 +1,83 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  background: #f6f8f7;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 10px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchWrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBox {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e6e5;
+  padding: 6px 12px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+}
+
+/* Right icons */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 992px) {
+  .searchBox {
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .searchWrap {
+    order: 3;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .right {
+    gap: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .left button {
+    padding: 4px 8px;
+  }
+
+  .right {
+    gap: 8px;
+  }
+}
