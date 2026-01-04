@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   FiHome,
   FiBarChart2,
@@ -25,6 +28,9 @@ export default function Sidebar() {
     FiSettings
   ];
 
+  const [active, setActive] = useState(1);
+  const [hover, setHover] = useState(null);
+
   return (
     <div
       style={{
@@ -42,7 +48,7 @@ export default function Sidebar() {
         top: 0
       }}
     >
-      {/* Top avatar */}
+      {/* Avatar */}
       <div
         style={{
           width: 42,
@@ -61,25 +67,37 @@ export default function Sidebar() {
         L
       </div>
 
-      {/* Icon list */}
-      {icons.map((Icon, idx) => (
-        <div
-          key={idx}
-          style={{
-            width: 36,
-            height: 36,
-            borderRadius: "10px",
-            background: idx === 1 ? "#1ea896" : "transparent",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#ffffff",
-            cursor: "pointer"
-          }}
-        >
-          <Icon size={18} />
-        </div>
-      ))}
+      {/* Icons */}
+      {icons.map((Icon, idx) => {
+        const isActive = active === idx;
+        const isHover = hover === idx;
+
+        return (
+          <div
+            key={idx}
+            onClick={() => setActive(idx)}
+            onMouseEnter={() => setHover(idx)}
+            onMouseLeave={() => setHover(null)}
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: "10px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "#fff",
+              background: isActive
+                ? "#1ea896"
+                : isHover
+                ? "#0b5d56"
+                : "transparent"
+            }}
+          >
+            <Icon size={18} />
+          </div>
+        );
+      })}
     </div>
   );
 }
