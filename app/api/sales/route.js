@@ -27,18 +27,24 @@ export async function GET(request) {
       },
     });
   } catch (err) {
+    console.error("GET /sales failed", err);
+
     return NextResponse.json(
-      { error: err.message },
+      {
+        data: [],
+        pagination: { total: 0, page: 1, pages: 1 },
+        error: err.message || "Database error",
+      },
       { status: 500 }
     );
   }
 }
+
 export async function POST(request) {
   try {
     await connectDB();
 
     const body = await request.json();
-
     const { saleName, status, amount, stage, nextActivityDate } = body;
 
     if (!saleName || !status || !amount || !stage || !nextActivityDate) {
@@ -52,8 +58,10 @@ export async function POST(request) {
 
     return NextResponse.json(sale, { status: 201 });
   } catch (err) {
+    console.error("POST /sales failed", err);
+
     return NextResponse.json(
-      { error: err.message },
+      { error: err.message || "Database error" },
       { status: 500 }
     );
   }

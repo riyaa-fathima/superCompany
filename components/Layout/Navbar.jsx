@@ -1,6 +1,19 @@
 "use client";
 
+import { useState } from "react";
+import {
+  FiPlus,
+  FiFilter,
+  FiSearch,
+  FiBell,
+  FiUser,
+  FiSettings,
+  FiLogOut
+} from "react-icons/fi";
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
       style={{
@@ -8,61 +21,159 @@ export default function Navbar() {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px 18px",
-        background: "#fff",
-        borderBottom: "1px solid #eee",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+        background: "#f6f8f7",
+        borderBottom: "1px solid #e5e7eb"
       }}
     >
-      {/* LEFT SIDE — New button + dropdown */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      {/* LEFT — New + Filter */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <button
           style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
             padding: "6px 10px",
-            borderRadius: "8px",
-            border: "1px solid #ddd",
-            background: "#F7FBFF",
+            borderRadius: "20px",
+            border: "1px solid #d6e3df",
+            background: "#ffffff",
+            color: "#1f7a6b",
+            cursor: "pointer"
           }}
         >
-          New ▼
+          <FiPlus /> New
         </button>
-      </div>
 
-      {/* CENTER — Search Bar */}
-      <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-        <input
-          placeholder="Search for anything"
+        <button
           style={{
-            width: "55%",
-            padding: "8px 10px",
-            borderRadius: "16px",
-            border: "1px solid #ddd",
-            background: "#FAFAFA",
-          }}
-        />
-      </div>
-
-      {/* RIGHT SIDE — Icons */}
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: "18px", cursor: "pointer" }}>🔔</span>
-        <span style={{ fontSize: "18px", cursor: "pointer" }}>☰</span>
-        <span style={{ fontSize: "14px", cursor: "pointer" }}>Help</span>
-
-        <div
-          style={{
-            width: 34,
-            height: 34,
+            width: 32,
+            height: 32,
             borderRadius: "50%",
-            background: "#1f7a6b",
-            color: "#fff",
+            border: "1px solid #d6e3df",
+            background: "#ffffff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontWeight: 600,
+            color: "#1f7a6b",
+            cursor: "pointer"
           }}
         >
-          L
+          <FiFilter size={16} />
+        </button>
+      </div>
+
+      {/* CENTER — Search */}
+      <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            width: "55%",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            background: "#ffffff",
+            borderRadius: "20px",
+            border: "1px solid #e2e6e5",
+            padding: "6px 12px"
+          }}
+        >
+          <FiSearch size={14} color="#888" />
+          <input
+            placeholder="Search for anything"
+            style={{
+              border: "none",
+              outline: "none",
+              flex: 1,
+              background: "transparent"
+            }}
+          />
+        </div>
+      </div>
+
+      {/* RIGHT — Icons */}
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        {/* Bell */}
+        <div style={{ position: "relative", cursor: "pointer" }}>
+          <FiBell size={18} />
+          <span
+            style={{
+              position: "absolute",
+              top: -6,
+              right: -6,
+              background: "#c0392b",
+              color: "#fff",
+              borderRadius: "50%",
+              fontSize: 10,
+              padding: "2px 5px"
+            }}
+          >
+            3
+          </span>
+        </div>
+
+        {/* PROFILE SECTION */}
+        <div style={{ position: "relative" }}>
+          <div
+            onClick={() => setOpen(o => !o)}
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: "50%",
+              background: "#1f7a6b",
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              fontWeight: 600
+            }}
+          >
+            R
+          </div>
+
+          {open && (
+            <div
+              style={{
+                position: "absolute",
+                right: 0,
+                top: 40,
+                background: "#fff",
+                borderRadius: "12px",
+                border: "1px solid #e5e5e5",
+                boxShadow: "0 8px 18px rgba(0,0,0,0.08)",
+                width: 190,
+                padding: "8px"
+              }}
+            >
+              <div style={{ padding: 8, fontWeight: 600 }}>Riya Fathima</div>
+              <hr style={{ border: "none", borderTop: "1px solid #eee" }} />
+
+              <button style={menuItem}>
+                <FiUser /> Profile
+              </button>
+
+              <button style={menuItem}>
+                <FiSettings /> Settings
+              </button>
+
+              <button style={{ ...menuItem, color: "#b3312f" }}>
+                <FiLogOut /> Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
+const menuItem = {
+  display: "flex",
+  alignItems: "center",
+  gap: 8,
+  padding: "8px",
+  width: "100%",
+  borderRadius: "8px",
+  border: "none",
+  background: "transparent",
+  cursor: "pointer",
+  fontSize: 13
+};

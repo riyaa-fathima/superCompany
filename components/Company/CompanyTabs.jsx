@@ -1,39 +1,32 @@
 "use client";
 import { useState } from "react";
 
-const tabs = ["Company", "More", "Interest", "Note", "Market data", "Misc"];
+const tabs = ["Company", "More", "Interest", "Note", "Market data","Misc"];
 
-export default function CompanyTabs({ onChange }) {
-  const [active, setActive] = useState("Company");
-
-  function handleTab(tab) {
-    setActive(tab);
-    onChange?.(tab);
-  }
-
+export default function CompanyTabs({ active, onChange }) {
   return (
     <div
       style={{
         display: "flex",
-        gap: 10,
-        padding: "6px 0",
-        borderBottom: "1px solid #eee"
+        gap: 14,
+        marginTop: 6,
+        marginBottom: 6,
+        borderBottom: "1px solid #e5e7eb",
+        paddingBottom: 4
       }}
     >
       {tabs.map((t) => {
-        const isActive = t === active;
-
+        const isActive = active === t;
         return (
           <button
             key={t}
-            onClick={() => handleTab(t)}
+            onClick={() => onChange(t)}
             style={{
-              padding: "6px 14px",
-              borderRadius: "18px",
-              border: "none",
-              background: isActive ? "#e7f3ef" : "transparent",
+              padding: "6px 12px",
+              borderRadius: "20px",
+              border: "1px solid #ddd",
+              background: isActive ? "#E7F2FF" : "#fff",
               color: isActive ? "#2a7c4b" : "#555",
-              fontSize: "13px",
               fontWeight: isActive ? 600 : 500,
               cursor: "pointer"
             }}
